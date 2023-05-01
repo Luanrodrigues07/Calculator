@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        *{
+        margin: 0;
+        padding: 0;
+        }
+        .fundo{
+            background-image: url("images/image.png");
+            height: 100vh;
+            color: white;
+            font-family: Arial;
+            text-align: center;
+            width: 4000px;
+            height: 3000px;
+
+        }
+        .calculadora{
+            position: absolute;
+            background-color: rgba(59, 58, 58, 0.664);
+            opacity: 1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%); 
+            border-radius: 15px;
+            padding: 15px;
+        }
+        .bt:hover{
+            background-color: rgb(39, 39, 39);
+        }
+        #resultado{
+            background-color: rgb(31, 31, 31);
+            width: 207px;
+            height: 30px;
+            margin: 5px;
+            font-size: 25px;
+            color: rgb(255, 255, 255);
+            padding: 4px;
+            text-align: right;
+            border-radius: 10px;
+
+        }
+        .bt2{
+            background-color: white;
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+                cursor: pointer;
+                background-color: rgb(248, 150, 2);
+                color: white;
+                border-radius: 15px;
+                border: none;
+                margin: 2px;
+        }
+            .bt{
+                background-color: white;
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+                cursor: pointer;
+                background-color: rgb(31,31,31);
+                color: white;
+                border-radius: 15px; 
+                border: none;
+                margin: 2px;
+
+            };
+
+    </style>
+</head>
+<body>
+    <div class="fundo">
+        <div class="calculadora">
+     <h1> </h1>
+     <p id="resultado"></p> 
+     <table>
+        <tr>
+            <td><button class="bt2" onclick="clean('')">C</button></td>
+            <td><button class="bt2" onclick="back('<')">Del</button></td>
+            <td><button class="bt2" onclick="insert('/')">/</button></td>
+            <td><button class="bt2" onclick="insert('*')">x</button></td>
+        </tr>
+        <tr>
+            <td><button class="bt" onclick="insert('9')">9</button></td>
+            <td><button class="bt" onclick="insert('8')">8</button></td>
+            <td><button class="bt" onclick="insert('7')">7</button></td>
+            <td><button class="bt2" onclick="insert('-')">-</button></td>
+        </tr>
+        <tr>
+            <td><button class="bt" onclick="insert('6')">6</button></td>
+            <td><button class="bt" onclick="insert('5')">5</button></td>
+            <td><button class="bt" onclick="insert('4')">4</button></td>
+            <td><button class="bt2" onclick="insert('+')">+</button></td>
+        </tr>
+        <tr>
+            <td><button class="bt" onclick="insert('3')">3</button></td>
+            <td><button class="bt" onclick="insert('2')">2</button></td>
+            <td><button class="bt" onclick="insert('1')">1</button></td>
+            <td rowspan="2"><button class="bt2" style="height: 106px;" onclick="calc('')" >=</button></td>
+        </tr>
+        <tr>
+            <td colspan="2" ><button class="bt" style="width: 106px;" onclick="insert('0')">0</button></td>
+            <td><button class="bt" onclick="insert('.')">.</button></td>
+            
+        </tr>
+     </table>
+    </div>
+</div>
+<script>
+    function insert(num){
+        var numero = document.getElementById('resultado').innerHTML;
+        document.getElementById('resultado').innerHTML = numero + num;
+    }
+    function clean(){
+        document.getElementById('resultado').innerHTML = "";
+    }
+    function back(){
+        var resultado = document.getElementById('resultado').innerHTML;
+        document.getElementById('resultado').innerHTML = resultado.substring(0, resultado.length - 1)
+    }
+    function calc(){
+        var resultado = document.getElementById('resultado').innerHTML;
+        if(resultado){
+            document.getElementById('resultado').innerHTML = eval(resultado)
+        }
+    }
+</script>
+</body>
+</html>
